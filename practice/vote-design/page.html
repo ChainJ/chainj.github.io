@@ -256,6 +256,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.4.1.2" data-path="../../software-engineering/efficiency-engineering/use-git-elegantly/page.html">
+            
+                <a href="../../software-engineering/efficiency-engineering/use-git-elegantly/page.html">
+            
+                    
+                    Use Git Elegantly
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -361,7 +374,12 @@
 <li><a href="#redis-kafka-mysql-&#x6D4B;&#x8BD5;&#x60C5;&#x51B5;">Redis + Kafka + Mysql &#x6D4B;&#x8BD5;&#x60C5;&#x51B5;</a></li>
 </ul>
 </li>
-<li><a href="#&#x63A5;&#x53E3;&#x6027;&#x80FD;&#x6D4B;&#x8BD5;">&#x63A5;&#x53E3;&#x6027;&#x80FD;&#x6D4B;&#x8BD5;</a></li>
+<li><a href="#&#x63A5;&#x53E3;&#x6D4B;&#x8BD5;">&#x63A5;&#x53E3;&#x6D4B;&#x8BD5;</a><ul>
+<li><a href="#redis-&#x6D4B;&#x8BD5;&#x60C5;&#x51B5;-1">Redis &#x6D4B;&#x8BD5;&#x60C5;&#x51B5;</a></li>
+<li><a href="#mysql-&#x6D4B;&#x8BD5;&#x60C5;&#x51B5;-1">Mysql &#x6D4B;&#x8BD5;&#x60C5;&#x51B5;</a></li>
+<li><a href="#redis-kafka-mysql-&#x6D4B;&#x8BD5;&#x60C5;&#x51B5;-1">Redis + Kafka + Mysql &#x6D4B;&#x8BD5;&#x60C5;&#x51B5;</a></li>
+</ul>
+</li>
 <li><a href="#&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</a></li>
 <li><a href="#&#x540E;&#x8BB0;">&#x540E;&#x8BB0;</a></li>
 </ul>
@@ -749,9 +767,400 @@ Uptime: 1517  Threads: 122  Questions: 12211865  Slow queries: 0  Opens: 246  Fl
 <pre><code>kafka-producer-perf-test --topic demo-community-vote --throughput -1 --num-records 100000 --record-size 1024 --producer-props bootstrap.servers=127.0.0.1:9092
 
 100000 records sent, 52410.901468 records/sec (51.18 MB/sec), 291.51 ms avg latency, 667.00 ms max latency, 291 ms 50th, 369 ms 95th, 398 ms 99th, 428 ms 99.9th.
-</code></pre><h1 id="&#x63A5;&#x53E3;&#x6027;&#x80FD;&#x6D4B;&#x8BD5;">&#x63A5;&#x53E3;&#x6027;&#x80FD;&#x6D4B;&#x8BD5;</h1>
-<p>&#x63A5;&#x53E3;&#x6D4B;&#x8BD5;&#x53D7;&#x5230;&#x786C;&#x4EF6;&#x5F71;&#x54CD;&#x6BD4;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x66F4;&#x5927;&#xFF0C;&#x9700;&#x8981;&#x8003;&#x8651;&#x7684;&#x914D;&#x7F6E;&#xFF08;&#x5982;&#x5408;&#x9002;&#x7684;Web&#x5BB9;&#x5668;&#xFF09;&#x4E5F;&#x66F4;&#x591A;&#x3002;&#x4F7F;&#x7528;&#x5F53;&#x524D;&#x786C;&#x4EF6;&#x8FDB;&#x884C;&#x4E86;&#x90E8;&#x5206;&#x6D4B;&#x8BD5;&#xFF0C;&#x7ED3;&#x679C;&#x8BEF;&#x5DEE;&#x5F88;&#x5927;&#xFF0C;&#x56E0;&#x6B64;&#x8FD9;&#x4E00;&#x6B21;&#x5148;&#x6309;&#x4E0B;&#x4E0D;&#x8868;&#x3002;</p>
-<h1 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h1>
+</code></pre><h1 id="&#x63A5;&#x53E3;&#x6D4B;&#x8BD5;">&#x63A5;&#x53E3;&#x6D4B;&#x8BD5;</h1>
+<p>&#x4F7F;&#x7528; <code>wrk</code> &#x8FDB;&#x884C;&#x5BF9;&#x4E09;&#x4E2A;&#x5E38;&#x89C1;&#x4E1A;&#x52A1;&#x573A;&#x666F;&#x8FDB;&#x884C;&#x6027;&#x80FD;&#x6D4B;&#x8BD5;&#xFF1A;</p>
+<ul>
+<li>&#x968F;&#x673A;&#x5199;&#x5165;&#x70B9;&#x8D5E;&#x6570;&#x636E;</li>
+<li>&#x67E5;&#x8BE2;&#x70B9;&#x8D5E;&#x6570;&#x91CF;</li>
+<li>&#x67E5;&#x8BE2;&#x662F;&#x5426;&#x70B9;&#x8D5E;</li>
+</ul>
+<p>&#x7531;&#x4E8E;&#x786C;&#x4EF6;&#x6C34;&#x5E73;&#x9650;&#x5236;&#xFF0C;&#x5E76;&#x53D1;&#x8D85;&#x8FC7;2000&#x65F6;&#x4F1A;&#x89E6;&#x53CA;Web&#x670D;&#x52A1;&#x5668;&#x74F6;&#x9888;&#xFF0C;&#x56E0;&#x6B64;&#x6BCF;&#x4E2A;&#x4E1A;&#x52A1;&#x573A;&#x666F;&#x4EC5;&#x8FDB;&#x884C;100&#x5E76;&#x53D1;&#x548C;1000&#x5E76;&#x53D1;&#x4E24;&#x6B21;&#x6D4B;&#x8BD5;&#x3002;</p>
+<p>&#x6574;&#x4F53;&#x6D4B;&#x8BD5;&#x7ED3;&#x679C;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x573A;&#x666F;</th>
+<th style="text-align:center">&#x5E76;&#x53D1;&#x5EA6;</th>
+<th style="text-align:center">&#x6307;&#x6807;</th>
+<th style="text-align:center">&#x65B9;&#x6848;&#x4E00;</th>
+<th style="text-align:center">&#x65B9;&#x6848;&#x4E8C;</th>
+<th style="text-align:center">&#x65B9;&#x6848;&#x4E09;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">&#x5199;&#x5165;&#x70B9;&#x8D5E;</td>
+<td style="text-align:center">100</td>
+<td style="text-align:center">p99</td>
+<td style="text-align:center">167ms</td>
+<td style="text-align:center">206ms</td>
+<td style="text-align:center">100ms</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">qps</td>
+<td style="text-align:center">1800</td>
+<td style="text-align:center">1300</td>
+<td style="text-align:center">1600</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">1000</td>
+<td style="text-align:center">p99</td>
+<td style="text-align:center">254ms</td>
+<td style="text-align:center">3000ms</td>
+<td style="text-align:center">900ms</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">qps</td>
+<td style="text-align:center">7100</td>
+<td style="text-align:center">700</td>
+<td style="text-align:center">1700</td>
+</tr>
+<tr>
+<td style="text-align:center">&#x70B9;&#x8D5E;&#x6570;&#x91CF;</td>
+<td style="text-align:center">100</td>
+<td style="text-align:center">p99</td>
+<td style="text-align:center">47ms</td>
+<td style="text-align:center">716ms</td>
+<td style="text-align:center">55ms</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">qps</td>
+<td style="text-align:center">4900</td>
+<td style="text-align:center">700</td>
+<td style="text-align:center">6000</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">1000</td>
+<td style="text-align:center">p99</td>
+<td style="text-align:center">182ms</td>
+<td style="text-align:center">2780ms</td>
+<td style="text-align:center">280ms</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">qps</td>
+<td style="text-align:center">8500</td>
+<td style="text-align:center">500</td>
+<td style="text-align:center">6900</td>
+</tr>
+<tr>
+<td style="text-align:center">&#x662F;&#x5426;&#x70B9;&#x8D5E;</td>
+<td style="text-align:center">100</td>
+<td style="text-align:center">p99</td>
+<td style="text-align:center">36ms</td>
+<td style="text-align:center">500ms</td>
+<td style="text-align:center">70ms</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">qps</td>
+<td style="text-align:center">5100</td>
+<td style="text-align:center">700</td>
+<td style="text-align:center">5200</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">1000</td>
+<td style="text-align:center">p99</td>
+<td style="text-align:center">488ms</td>
+<td style="text-align:center">2780ms</td>
+<td style="text-align:center">211ms</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">qps</td>
+<td style="text-align:center">4200</td>
+<td style="text-align:center">600</td>
+<td style="text-align:center">7900</td>
+</tr>
+</tbody>
+</table>
+<h2 id="redis-&#x6D4B;&#x8BD5;&#x60C5;&#x51B5;">Redis &#x6D4B;&#x8BD5;&#x60C5;&#x51B5;</h2>
+<p>&#x968F;&#x673A;&#x5199;&#x5165;&#x70B9;&#x8D5E;&#x6570;&#x636E;</p>
+<pre><code>Running 15s test @ http://127.0.0.1:8081/upvote/random
+  8 threads and 100 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    55.60ms   31.99ms 302.77ms   83.58%
+    Req/Sec   227.21    100.30   475.00     55.26%
+  Latency Distribution
+     50%   43.53ms
+     75%   65.46ms
+     90%  100.94ms
+     99%  167.34ms
+  27081 requests in 15.09s, 3.31MB read
+Requests/sec:   1794.27
+Transfer/sec:    224.53KB
+
+
+Running 15s test @ http://127.0.0.1:8081/upvote/random
+  8 threads and 1000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   135.43ms   34.15ms 326.33ms   79.71%
+    Req/Sec     0.91k   290.23     1.89k    73.70%
+  Latency Distribution
+     50%  131.31ms
+     75%  146.71ms
+     90%  171.76ms
+     99%  254.73ms
+  107072 requests in 15.09s, 13.09MB read
+  Socket errors: connect 0, read 3491, write 24, timeout 0
+Requests/sec:   7097.73
+Transfer/sec:      0.87MB
+</code></pre><p>&#x968F;&#x673A;&#x67E5;&#x8BE2;&#x70B9;&#x8D5E;&#x6570;&#x91CF;</p>
+<pre><code>Running 15s test @ http://127.0.0.1:8081/upvote/random/count
+  8 threads and 100 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    19.70ms    8.03ms  79.67ms   75.09%
+    Req/Sec   617.23    186.98     1.16k    65.80%
+  Latency Distribution
+     50%   18.89ms
+     75%   23.20ms
+     90%   28.27ms
+     99%   46.94ms
+  74139 requests in 15.10s, 9.06MB read
+Requests/sec:   4910.58
+Transfer/sec:    614.66KB
+
+
+Running 15s test @ http://127.0.0.1:8081/upvote/random/count
+  8 threads and 1000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   109.59ms   25.53ms 304.32ms   70.98%
+    Req/Sec     1.09k   346.52     2.06k    77.26%
+  Latency Distribution
+     50%  107.17ms
+     75%  120.24ms
+     90%  141.07ms
+     99%  182.09ms
+  128967 requests in 15.09s, 15.76MB read
+  Socket errors: connect 0, read 6815, write 49, timeout 0
+Requests/sec:   8544.67
+Transfer/sec:      1.04MB
+</code></pre><p>&#x968F;&#x673A;&#x67E5;&#x8BE2;&#x662F;&#x5426;&#x70B9;&#x8D5E;</p>
+<pre><code>Running 15s test @ http://127.0.0.1:8081/upvote/random/voted
+  8 threads and 100 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    18.84ms    4.77ms  69.08ms   81.61%
+    Req/Sec   641.78    102.37     0.91k    70.50%
+  Latency Distribution
+     50%   17.91ms
+     75%   20.58ms
+     90%   24.04ms
+     99%   36.23ms
+  76797 requests in 15.04s, 9.46MB read
+Requests/sec:   5104.72
+Transfer/sec:    644.00KB
+
+
+Running 15s test @ http://127.0.0.1:8081/upvote/random/voted
+  8 threads and 1000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   240.45ms   69.55ms 588.15ms   75.02%
+    Req/Sec   516.43    231.52     1.15k    66.13%
+  Latency Distribution
+     50%  245.73ms
+     75%  275.92ms
+     90%  306.72ms
+     99%  488.76ms
+  60775 requests in 15.08s, 7.48MB read
+  Socket errors: connect 0, read 3585, write 102, timeout 0
+Requests/sec:   4029.91
+Transfer/sec:    507.67KB
+</code></pre><h2 id="mysql-&#x6D4B;&#x8BD5;&#x60C5;&#x51B5;">Mysql &#x6D4B;&#x8BD5;&#x60C5;&#x51B5;</h2>
+<p>&#x5355;&#x673A;&#x5E76;&#x53D1;&#x5728;200&#x5DE6;&#x53F3;&#x8FD8;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#xFF0C;&#x5230;500&#x5E76;&#x53D1;&#x65F6;&#x5E73;&#x5747;&#x8017;&#x65F6;&#x76F4;&#x7EBF;&#x4E0A;&#x5347;</p>
+<p>&#x968F;&#x673A;&#x5199;&#x5165;&#x70B9;&#x8D5E;&#x6570;&#x636E;</p>
+<pre><code>Running 15s test @ http://127.0.0.1:8081/upvote/random
+  8 threads and 100 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    74.73ms   39.44ms 358.83ms   75.32%
+    Req/Sec   165.73     43.15   313.00     68.72%
+  Latency Distribution
+     50%   65.42ms
+     75%   92.70ms
+     90%  127.60ms
+     99%  206.27ms
+  19753 requests in 15.10s, 2.41MB read
+Requests/sec:   1308.35
+Transfer/sec:    163.76KB
+
+
+Running 15s test @ http://127.0.0.1:8081/upvote/random
+  8 threads and 1000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.28s   623.37ms   3.52s    76.48%
+    Req/Sec    96.99     56.02   290.00     64.44%
+  Latency Distribution
+     50%    1.09s
+     75%    1.57s
+     90%    2.22s
+     99%    3.06s
+  11021 requests in 15.10s, 1.35MB read
+  Socket errors: connect 0, read 4464, write 14, timeout 0
+Requests/sec:    729.82
+Transfer/sec:     91.24KB
+</code></pre><p>&#x968F;&#x673A;&#x67E5;&#x8BE2;&#x70B9;&#x8D5E;&#x6570;&#x91CF;</p>
+<pre><code>Running 15s test @ http://127.0.0.1:8081/upvote/random/count
+  8 threads and 100 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   159.69ms  164.80ms   1.06s    85.51%
+    Req/Sec    93.75     45.13   290.00     72.45%
+  Latency Distribution
+     50%  125.30ms
+     75%  244.04ms
+     90%  377.00ms
+     99%  716.69ms
+  11202 requests in 15.09s, 1.37MB read
+Requests/sec:    742.51
+Transfer/sec:     92.69KB
+
+
+Running 15s test @ http://127.0.0.1:8081/upvote/random/count
+  8 threads and 1000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.72s   560.49ms   3.31s    72.10%
+    Req/Sec    70.20     37.27   280.00     64.61%
+  Latency Distribution
+     50%    1.75s
+     75%    2.10s
+     90%    2.46s
+     99%    2.78s
+  7962 requests in 15.08s, 0.97MB read
+  Socket errors: connect 0, read 5757, write 71, timeout 0
+Requests/sec:    528.03
+Transfer/sec:     65.84KB
+</code></pre><p>&#x968F;&#x673A;&#x67E5;&#x8BE2;&#x662F;&#x5426;&#x70B9;&#x8D5E;</p>
+<pre><code>Running 15s test @ http://127.0.0.1:8081/upvote/random/voted
+  8 threads and 100 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   143.77ms  123.50ms 960.63ms   74.31%
+    Req/Sec    94.14     44.22   272.00     66.52%
+  Latency Distribution
+     50%  114.05ms
+     75%  212.47ms
+     90%  307.71ms
+     99%  545.08ms
+  11113 requests in 15.10s, 1.37MB read
+Requests/sec:    735.87
+Transfer/sec:     92.81KB
+
+
+Running 15s test @ http://127.0.0.1:8081/upvote/random/voted
+  8 threads and 1000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.60s   492.57ms   3.11s    78.52%
+    Req/Sec    74.13     42.23   352.00     66.27%
+  Latency Distribution
+     50%    1.57s
+     75%    1.86s
+     90%    2.20s
+     99%    2.79s
+  8320 requests in 15.09s, 1.02MB read
+  Socket errors: connect 0, read 4051, write 278, timeout 0
+Requests/sec:    551.44
+Transfer/sec:     69.46KB
+</code></pre><h2 id="redis--kafka--mysql-&#x6D4B;&#x8BD5;&#x60C5;&#x51B5;">Redis + Kafka + Mysql &#x6D4B;&#x8BD5;&#x60C5;&#x51B5;</h2>
+<p>&#x968F;&#x673A;&#x5199;&#x5165;&#x70B9;&#x8D5E;&#x6570;&#x636E;</p>
+<pre><code>Running 15s test @ http://127.0.0.1:8081/upvote/random
+  8 threads and 100 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    59.28ms   12.85ms 115.39ms   69.38%
+    Req/Sec   202.63     43.91   393.00     73.50%
+  Latency Distribution
+     50%   58.69ms
+     75%   66.57ms
+     90%   75.54ms
+     99%  100.70ms
+  24317 requests in 15.08s, 2.97MB read
+Requests/sec:   1612.34
+Transfer/sec:    201.79KB
+
+
+Running 15s test @ http://127.0.0.1:8081/upvote/random
+  8 threads and 1000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   536.15ms  146.29ms   1.02s    70.19%
+    Req/Sec   235.21    207.01     1.02k    70.95%
+  Latency Distribution
+     50%  515.93ms
+     75%  634.72ms
+     90%  726.52ms
+     99%  923.41ms
+  25059 requests in 15.09s, 3.06MB read
+  Socket errors: connect 0, read 6929, write 108, timeout 0
+Requests/sec:   1660.10
+Transfer/sec:    207.53KB
+</code></pre><p>&#x968F;&#x673A;&#x67E5;&#x8BE2;&#x70B9;&#x8D5E;&#x6570;&#x91CF;</p>
+<pre><code>Running 15s test @ http://127.0.0.1:8081/upvote/random/count
+  8 threads and 100 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    16.42ms    8.79ms 154.03ms   88.85%
+    Req/Sec   761.49    211.02     1.61k    77.67%
+  Latency Distribution
+     50%   14.68ms
+     75%   17.33ms
+     90%   22.60ms
+     99%   54.78ms
+  91281 requests in 15.05s, 10.91MB read
+Requests/sec:   6063.49
+Transfer/sec:    741.87KB
+
+
+Running 15s test @ http://127.0.0.1:8081/upvote/random/count
+  8 threads and 1000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   131.90ms   40.43ms 531.49ms   76.71%
+    Req/Sec     0.91k   379.89     2.01k    77.34%
+  Latency Distribution
+     50%  121.78ms
+     75%  142.15ms
+     90%  186.37ms
+     99%  282.30ms
+  103664 requests in 15.09s, 12.39MB read
+  Socket errors: connect 0, read 6273, write 96, timeout 0
+Requests/sec:   6871.93
+Transfer/sec:    840.78KB
+</code></pre><p>&#x968F;&#x673A;&#x67E5;&#x8BE2;&#x662F;&#x5426;&#x70B9;&#x8D5E;</p>
+<pre><code>Running 15s test @ http://127.0.0.1:8081/upvote/random/voted
+  8 threads and 100 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    20.76ms   46.51ms   2.15s    98.79%
+    Req/Sec   655.35    243.15     1.55k    75.25%
+  Latency Distribution
+     50%   16.47ms
+     75%   20.96ms
+     90%   31.04ms
+     99%   69.94ms
+  78604 requests in 15.09s, 9.68MB read
+Requests/sec:   5207.97
+Transfer/sec:    657.04KB
+
+
+Running 15s test @ http://127.0.0.1:8081/upvote/random/voted
+  8 threads and 1000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   113.65ms   28.75ms 386.92ms   73.48%
+    Req/Sec     1.01k   382.66     2.03k    76.39%
+  Latency Distribution
+     50%  109.56ms
+     75%  122.12ms
+     90%  148.83ms
+     99%  211.10ms
+  119410 requests in 15.10s, 14.71MB read
+  Socket errors: connect 0, read 7855, write 85, timeout 0
+Requests/sec:   7909.80
+Transfer/sec:      0.97MB
+</code></pre><h1 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h1>
 <p>&#x57FA;&#x4E8E;&#x4E0A;&#x8FF0;&#x6D4B;&#x8BD5;&#x7ED3;&#x679C;&#xFF0C;&#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#x5404;&#x4E2A;&#x65B9;&#x6848;&#x7684;&#x4F18;&#x7F3A;&#x70B9;&#xFF1A;</p>
 <table>
 <thead>
@@ -841,7 +1250,7 @@ Uptime: 1517  Threads: 122  Questions: 12211865  Slow queries: 0  Opens: 246  Fl
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Vote Design","level":"1.5.1","depth":2,"previous":{"title":"Practice","level":"1.5","depth":1,"path":"practice/README.md","ref":"practice/README.md","articles":[{"title":"Vote Design","level":"1.5.1","depth":2,"path":"practice/vote-design/page.md","ref":"practice/vote-design/page.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"practice/vote-design/page.md","mtime":"2021-09-07T07:19:44.947Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-07T07:18:01.663Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Vote Design","level":"1.5.1","depth":2,"previous":{"title":"Practice","level":"1.5","depth":1,"path":"practice/README.md","ref":"practice/README.md","articles":[{"title":"Vote Design","level":"1.5.1","depth":2,"path":"practice/vote-design/page.md","ref":"practice/vote-design/page.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"practice/vote-design/page.md","mtime":"2021-09-08T11:09:23.032Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-08T11:09:35.270Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
